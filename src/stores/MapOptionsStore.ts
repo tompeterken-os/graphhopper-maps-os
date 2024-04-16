@@ -13,9 +13,12 @@ const osApiKey = config.keys.omniscale
 const mapTilerKey = config.keys.maptiler
 const thunderforestApiKey = config.keys.thunderforest
 const kurvigerApiKey = config.keys.kurviger
+const ordnancesurveyApiKey = config.keys.ordnancesurvey
 
 const osmAttribution =
     '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
+
+const ordnancesurveyAttribution = '&copy; Crown Copyright Ordnance Survey 2024'
 
 export interface MapOptionsStoreState {
     styleOptions: StyleOption[]
@@ -87,6 +90,34 @@ const omniscale: RasterStyle = {
     attribution: osmAttribution + ', &copy; <a href="https://maps.omniscale.com/" target="_blank">Omniscale</a>',
     tilePixelRatio: tilePixelRatio,
 }
+
+const ordnancesurveyLight: RasterStyle = {
+    name: 'Ordnance Survey Light',
+    type: 'raster',
+    url: [
+        'https://api.os.uk/maps/raster/v1/zxy/Light_3857/{z}/{x}/{y}.png?key=' + ordnancesurveyApiKey,
+    ],
+    attribution: ordnancesurveyAttribution,
+}
+
+const ordnancesurveyRoad: RasterStyle = {
+    name: 'Ordnance Survey Road',
+    type: 'raster',
+    url: [
+        'https://api.os.uk/maps/raster/v1/zxy/Road_3857/{z}/{x}/{y}.png?key=' + ordnancesurveyApiKey,
+    ],
+    attribution: ordnancesurveyAttribution,
+}
+
+const ordnancesurveyOutdoor: RasterStyle = {
+    name: 'Ordnance Survey Outdoor',
+    type: 'raster',
+    url: [
+        'https://api.os.uk/maps/raster/v1/zxy/Outdoor_3857/{z}/{x}/{y}.png?key=' + ordnancesurveyApiKey,
+    ],
+    attribution: ordnancesurveyAttribution,
+}
+
 const esriSatellite: RasterStyle = {
     name: 'Esri Satellite',
     type: 'raster',
@@ -181,18 +212,10 @@ const wanderreitkarte: RasterStyle = {
 }
 
 const styleOptions: StyleOption[] = [
-    omniscale,
+    ordnancesurveyLight,
+    ordnancesurveyRoad,
+    ordnancesurveyOutdoor,
     osmOrg,
-    osmCycl,
-    esriSatellite,
-    mapTilerSatellite,
-    tfTransport,
-    tfCycle,
-    tfOutdoors,
-    kurviger,
-    mapillion,
-    lyrk,
-    wanderreitkarte,
 ]
 
 export default class MapOptionsStore extends Store<MapOptionsStoreState> {

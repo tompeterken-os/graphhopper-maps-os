@@ -5,9 +5,9 @@ const config = {
     // the url of the GraphHopper routing backend, either use graphhopper.com or point it to your own GH instance
     routingApi: 'https://graphhopper.com/api/1/',
     // the url of the geocoding backend, either use graphhopper.com or point it to another geocoding service. use an empty string to disable the address search
-    geocodingApi: 'https://graphhopper.com/api/1/',
+    geocodingApi: '',
     // the tile layer used by default, see MapOptionsStore.ts for all options
-    defaultTiles: 'OpenStreetMap',
+    defaultTiles: 'Ordnance Survey Light',
     // various api keys used for the GH backend and the different tile providers
     keys: {
         graphhopper: 'bfb9d728-3732-4542-9e92-f638ac1c9f3a',
@@ -15,9 +15,10 @@ const config = {
         omniscale: 'missing_api_key',
         thunderforest: 'missing_api_key',
         kurviger: 'missing_api_key',
+        ordnancesurvey: 'LtYJq12RX8nMZWHt1ADf3EAc2LdBiZX6',
     },
     // if true there will be an option to enable the GraphHopper routing graph and the urban density visualization in the layers menu
-    routingGraphLayerAllowed: false,
+    routingGraphLayerAllowed: true,
     // parameters used for the routing request generation
     request: {
         details: [
